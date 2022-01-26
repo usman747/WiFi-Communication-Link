@@ -1,0 +1,102 @@
+<!doctype html>
+
+<!--<head>
+
+    <!-- Client Web Application Working: 21-August-2019  By Soban Ahmed
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Font Awesome 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    <div class ="row justify-content-center">
+        <h2 class="text-center">Get In Touch</h2>
+    </div>
+    </br>   
+-->
+
+            <!--Form with header-->
+
+            <head>
+    		<title>Client</title>
+    		<meta charset = "UTF-8" />
+            </head>
+
+            <body>
+    		<h1> Client </h1>
+	    <fieldset>
+        	<legend>WiFi & Serial Configuration</legend>
+	    <br>
+            </br>
+            <form role="form" action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <!--{{ form }}-->
+		<label> <span title="Set the static WLAN IP of Client from here. Make sure that you change the Client's WLAN IP first from here, and the network of Master & Client are same"> Static IP :- &nbsp; &nbsp; &nbsp; &nbsp;</span> {{form.Static_IP }} </label> 
+            
+            <br>
+            </br>
+
+	    <p>
+            <label> Connected To :- {{Default_ESSID}} </label>
+            </p>
+
+            <p>
+            <label> Frequency :- &nbsp; &nbsp; &nbsp;  {{Default_Frequency}} </label>
+            </p>
+
+            </br>
+ 
+            <p>
+	    <label> <span title="Set the serial host IP from this text box. It must be same as Master's WLAN static IP and its serial host setting.">Serial Host :- &nbsp; &nbsp;</span> {{form.S_Host}} </label>
+            </p>
+           
+            <p>
+            <label> <span title="Set the port number at which you configured the Master serial port no in its web page.">Serial Port :- &nbsp; &nbsp;&nbsp;</span> {{form.S_Port }} </label>
+            </p>
+            
+            <p>
+            <label> <span title="Set the baud for serial data transmission. Set the same rate which you configured in the Master serial settings -> baud rate.">Serial Baud :- &nbsp;&nbsp;</span> {{form.S_Baud }} </label>
+            </p>
+            
+            <p>
+            <label> <span title="Set the serial buffer size from here. It should be in power of 2. Must be same as configured in Master">Wi-Fi Buffer :-&nbsp;</span> {{form.S_Buffer }} </label>
+           <!-- <label> <input type = "text"
+                 id = "myIP"
+                 name = "Serial Buffer :" 
+                 value = "{{form.S_Buffer.value|stringformat:'Asada'}}" </label>
+            </input> -->
+
+            </p>
+
+            <br>
+            </br>  
+
+	    <button type ="submit" onclick="alert('Reboot your system to Apply Changes.')" > Apply Changes </button>
+            
+            <button type ="submit" name="Reboot" value="1" onclick="alert('Rebooting your System.')" > Reboot </button>
+
+            <br>
+            </br>
+
+            <br>
+
+            <button type ="submit" name="ClientOrMaster" value="1" onclick="alert('Configuring Client as Master and rebooting your System.')" > Configure Client as Master and Reboot </button>
+            
+            </br>
+
+            </form>
+
+            </br>
+	    
+
+	    </fieldset>
+        </div>
+    </div>
+</body>
+
+              
+
+
