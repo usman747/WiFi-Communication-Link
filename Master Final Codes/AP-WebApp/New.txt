@@ -1,0 +1,64 @@
+
+import RPi.GPIO as GPIO
+import time
+   
+
+
+
+
+    
+def Percentage_to_float(S_Signal_Quality):
+    return float(S_Signal_Quality.strip('%'))
+    
+
+def LEDs(F_Quality):
+    
+    #
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    #
+    
+    GPIO.setup(11, GPIO.OUT)
+    
+    if (F_Quality >= 75.0):
+        GPIO.output(11,1)
+        print F_Quality
+        print "\n"
+
+
+
+
+
+
+
+
+
+#
+        #S_Network_Name = get_name(cell)
+        #if S_Network_Name == "NameOfNetwork":
+        #    S_cell = cell
+        #    S_Signal_Quality = get_quality(S_cell)
+        #    print "\n" 
+        #    print S_Network_Name
+        #    print S_Signal_Quality
+        #    print "\n"
+        #    F_Quality = Percentage_to_float(S_Signal_Quality)
+        #    LEDs(F_Quality) 
+
+
+
+
+
+
+
+#Edited by Soban
+    
+    #S_Network_Name = get_name(cell)
+    
+    #if S_Network_Name == "NameOfNetwork":
+    #    S_cell = cell
+    #    S_Signal_Quality = get_quality(S_cell)
+    #    print "\n" 
+    #    print S_Signal_Quality
+    #    print "\n\n" 
+    #print cell

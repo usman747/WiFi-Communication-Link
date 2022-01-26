@@ -1,0 +1,262 @@
+<!doctype html>
+
+<!--<head>
+
+    <!-- AP Working Latest : 21-August-2019  By Soban Ahmed
+ 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Font Awesome 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    <div class ="row justify-content-center">
+        <h2 class="text-center">Get In Touch</h2>
+    </div>
+    </br>   
+-->
+
+            <!--Form with header-->
+
+            <head>
+    		<title> Master </title>
+    		<meta charset = "UTF-8" />
+            </head>
+
+            <body>
+    		<h1> Master </h1>
+	    <fieldset>
+        	<legend>WiFi & Serial Configuration</legend>
+	    <br>
+            </br>
+            <form role="form" action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <!--{{ form }}-->
+		<label> Static IP :-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{form.Static_IP }} </label> 
+            
+           
+           
+
+            <p>
+            {% if Comp_2_4 %}
+
+            <label> Frequency :- &nbsp; &nbsp; &nbsp; &nbsp;   
+            <input title="Select this to set the communication link at 2.4 GHz frequency band" type="checkbox" id="band1" name="band" value="2" checked onclick="onlyOne(this)"> 2.4 GHz  
+            <input title="Select this to set communication link at 5 GHz frequency band" type="checkbox" id="band2" name="band" value="5" onclick="onlyOne(this)"> 5.2 GHz 
+            </label>
+
+            {% else %}
+
+            <label> Frequency :- &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="checkbox" id="band1" name="band" value="2" onclick="onlyOne(this)"> 2.4 GHz 
+            <input type="checkbox" id="band2" name="band" value="5" checked onclick="onlyOne(this)"> 5.2 GHz 
+            </label> 
+            {% endif %}
+
+            </p>
+
+            <p>
+            {% if En_Key %}
+
+            <label> Encryption Key:-  
+            <input title="This sets the encryption key method to highly secure WPA2 security standard" type="checkbox" id="key2" name="key" value="2" checked onclick="onlyOne1(this)"> WPA2
+            <input title="This sets the encryption key method to moderately secure WPA security standard" type="checkbox" id="key1" name="key" value="1" onclick="onlyOne1(this)"> WPA             
+
+            </label>
+
+            {% else %}
+
+            <label> Encryption Key:-   
+            <input type="checkbox" id="key2" name="key" value="2" onclick="onlyOne1(this)"> WPA2            
+            <input type="checkbox" id="key1" name="key" value="1" checked onclick="onlyOne1(this)"> WPA 
+            </label> 
+            {% endif %}
+
+            </p>
+
+            <p>
+            {% if W_Mode %}
+
+            <label> Wi-Fi Mode :- &nbsp; &nbsp;&nbsp;  
+            <input title="Use this WiFi mode(Modulation Scheme) for achieving greater range" type="checkbox" id="mode1" name="mode" value="1" checked onclick="onlyOne2(this)"> IEEE 802.11n  
+            <input title="Use this WiFi mode(Modulation Scheme) when higher data rates and less interference(from random signals) is desired" type="checkbox" id="mode2" name="mode" value="2" onclick="onlyOne2(this)"> IEEE 802.11ac (5GHz only)
+            </label>
+
+            {% else %}
+
+            <label> Wi-Fi Mode :- &nbsp; &nbsp;&nbsp;
+            <input type="checkbox" id="mode1" name="mode" value="1" onclick="onlyOne2(this)"> IEEE 802.11n  
+            <input type="checkbox" id="mode2" name="mode" value="2" checked onclick="onlyOne2(this)"> IEEE 802.11ac (5GHz only) 
+            </label> 
+            {% endif %}
+
+            </p>
+            
+            <p>
+            {% if Iso_Client %}
+
+            <label> Isolate Client :-&nbsp;&nbsp;&nbsp;   
+            <input title="This settings allows the client to access network and its connected devices" type="checkbox" id="iso1" name="iso" value="1" checked onclick="onlyOne3(this)"> No  
+            <input title="Select this setting to block/isolate client to access network and its connected devices" type="checkbox" id="iso2" name="iso" value="2" onclick="onlyOne3(this)"> Yes
+            </label>
+
+            {% else %}
+
+            <label> Isolate Client :-&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="iso1" name="iso" value="1" onclick="onlyOne3(this)"> No  
+            <input type="checkbox" id="iso2" name="iso" value="2" checked onclick="onlyOne3(this)"> Yes 
+            </label> 
+            {% endif %}
+
+            </p>
+         
+            <p>
+       <label> Wi-Fi Channel :- &nbsp; {{form.W_Channel }} </label>
+            </p>         
+            
+            <br>
+            
+            <hr style="width:100%;text-align:left;margin-left:0">
+     
+            <br>
+ 
+            <p>
+	    <label> Serial Host :- &nbsp; &nbsp; &nbsp; &nbsp; {{form.S_Host}} </label>
+            </p>
+           
+            <p>
+            <label> Serial Port	:- &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; {{form.S_Port }} </label>
+            </p>
+            
+            <p>
+            <label> Serial Baud :- &nbsp; &nbsp; &nbsp;&nbsp; {{form.S_Baud }} </label>
+            </p>
+            
+            <p>
+            <label> Wi-Fi Buffer :- &nbsp; &nbsp;&nbsp; {{form.S_Buffer }} </label>
+           
+
+            </p>
+
+            <br>
+            </br>  
+
+	    <button type ="submit" name="WiFi" value="wifi"  onclick="alert('Reboot your system to Apply Changes.')"> Apply Changes </button>
+           
+	    <button type ="submit" name="Reboot" value="1"  onclick="alert('Rebooting your system.')"> Reboot </button>
+
+            <br>
+            </br>
+
+            <br>
+
+            <button type ="submit" name="MasterOrClient" value="1"  onclick="alert('Configuring Master as Client & Rebooting your system to Apply Changes.')"> Configure Master as Client & Reboot </button>
+
+            </br>
+
+            </form>
+
+            </br>
+	    
+	    </fieldset>
+
+
+
+            <br>
+            </br>
+            
+            <fieldset>
+                <legend>Client Configuration</legend>
+            <br>
+            
+            <form role="form1" action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <!--{{ form }}-->
+     
+                <label> Client-1 :- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; {{form1.Client1}} </label>
+              
+
+            <p>
+            <label> Device-1 IP :- &nbsp; &nbsp; &nbsp;&nbsp; {{form1.Client_Route1}} </label>
+            </p>
+
+            <p>
+            <label> Device-2 IP :- &nbsp; &nbsp; &nbsp;&nbsp; {{form1.Client_Route2}} </label>
+            </p>
+
+            <p>
+            <label> Device-3 IP :- &nbsp; &nbsp; &nbsp;&nbsp; {{form1.Client_Route3}} </label>
+            </p>
+
+            <p>
+            <label> Device-4 IP :- &nbsp; &nbsp; &nbsp;&nbsp; {{form1.Client_Route4}} </label>
+            </p>
+            </br>
+
+            <button type ="submit" name="Client" value="client" onclick="alert('Reboot your system to Apply Changes.')"> Apply Changes </button>
+
+            <button type ="submit" name="Reboot" value="1"  onclick="alert('Rebooting your system.')"> Reboot </button>
+            
+
+            <br>
+            </br>
+
+            <br>
+
+            <button type ="submit" name="MasterOrClient" value="1"  onclick="alert('Configuring Master as Client & Rebooting your system to Apply Changes.')"> Configure Master as Client & Reboot </button>
+
+            </br>
+
+            </form>
+            </fieldset>
+        </div>
+    </div>
+
+<script>
+function onlyOne(checkbox){
+        //alert('In Function')
+	var checkboxes = document.getElementsByName("band")
+	checkboxes.forEach((item) => {
+   		if (item !== checkbox) item.checked = false
+	})
+}
+</script>
+
+<script>
+function onlyOne1(checkbox){
+        //alert('In Function')
+	var checkboxes = document.getElementsByName("key")
+	checkboxes.forEach((item) => {
+   		if (item !== checkbox) item.checked = false
+	})
+}
+</script>
+
+<script>
+function onlyOne2(checkbox){
+        //alert('In Function')
+	var checkboxes = document.getElementsByName("mode")
+	checkboxes.forEach((item) => {
+   		if (item !== checkbox) item.checked = false
+	})
+}
+</script>
+
+<script>
+function onlyOne3(checkbox){
+        //alert('In Function')
+	var checkboxes = document.getElementsByName("iso")
+	checkboxes.forEach((item) => {
+   		if (item !== checkbox) item.checked = false
+	})
+}
+</script>
+
+</body>
+
+              
+
+

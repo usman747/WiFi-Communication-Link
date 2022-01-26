@@ -1,0 +1,4 @@
+wpa2
+802.11n
+No
+default

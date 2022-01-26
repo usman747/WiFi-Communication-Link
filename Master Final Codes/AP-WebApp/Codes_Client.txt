@@ -1,0 +1,2 @@
+nmap -sP -n 192.168.4.0/24
+iwlist wlan0 scan

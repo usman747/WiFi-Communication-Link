@@ -1,0 +1,149 @@
+<!doctype html>
+
+<!--<head>
+
+    <!-- JQuery & Bootstrap 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Font Awesome 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    <div class ="row justify-content-center">
+        <h2 class="text-center">Get In Touch</h2>
+    </div>
+    </br>   
+-->
+
+            <!--Form with header-->
+
+            <head>
+    		<title>Access Point</title>
+    		<meta charset = "UTF-8" />
+            </head>
+
+            <body>
+    		<h1> Access Point </h1>
+	    <fieldset>
+        	<legend>WiFi & Serial Configuration</legend>
+	    <br>
+            </br>
+            <form role="form" action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <!--{{ form }}-->
+		<label> Static IP : {{form.Static_IP }} </label> 
+            
+           
+           
+
+            <p>
+            {% if Comp_2_4 %}
+
+            <label> Frequency :   
+            <input type="checkbox" id="band1" name="band" value="2" checked onclick="onlyOne(this)"> 2.4 GHz  
+            <input type="checkbox" id="band2" name="band" value="5" onclick="onlyOne(this)"> 5.2 GHz 
+            </label>
+
+            {% else %}
+
+            <label> Frequency :   
+            <input type="checkbox" id="band1" name="band" value="2" onclick="onlyOne(this)"> 2.4 GHz 
+            <input type="checkbox" id="band2" name="band" value="5" checked onclick="onlyOne(this)"> 5.2 GHz 
+            </label> 
+            {% endif %}
+
+            </p>
+
+
+
+
+            <br>
+            </br>
+ 
+            <p>
+	    <label> Serial Host : {{form.S_Host}} </label>
+            </p>
+           
+            <p>
+            <label> Serial Port : {{form.S_Port }} </label>
+            </p>
+            
+            <p>
+            <label> Serial Baud : {{form.S_Baud }} </label>
+            </p>
+            
+            <p>
+            <label> Serial Buffer : {{form.S_Buffer }} </label>
+           
+
+            </p>
+
+            <br>
+            </br>  
+
+	    <button type ="submit" name="WiFi" value="wifi"  onclick="alert('Reboot your system to Apply Changes.')"> Apply Changes </button>
+           
+            </form>
+
+            </br>
+	    
+	    </fieldset>
+
+
+
+            <br>
+            </br>
+            
+            <fieldset>
+                <legend>Client Configuration</legend>
+            <br>
+            
+            <form role="form1" action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <!--{{ form }}-->
+     
+                <label> Client-1 : {{form1.Client1}} </label>
+              
+
+            <p>
+            <label> Device-1 IP : {{form1.Client_Route1}} </label>
+            </p>
+
+            <p>
+            <label> Device-2 IP : {{form1.Client_Route2}} </label>
+            </p>
+
+            <p>
+            <label> Device-3 IP : {{form1.Client_Route3}} </label>
+            </p>
+
+            <p>
+            <label> Device-4 IP : {{form1.Client_Route4}} </label>
+            </p>
+            </br>
+
+            <button type ="submit" name="Client" value="client" onclick="alert('Reboot your system to Apply Changes.')"> Apply Changes </button>
+            
+            </form>
+            </fieldset>
+        </div>
+    </div>
+
+<script>
+function onlyOne(checkbox){
+        //alert('In Function')
+	var checkboxes = document.getElementsByName("band")
+	checkboxes.forEach((item) => {
+   		if (item !== checkbox) item.checked = false
+	})
+}
+</script>
+
+</body>
+
+              
+
+
